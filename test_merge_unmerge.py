@@ -14,7 +14,7 @@ def make_sure_public_logs_doesnt_exist(dbcon, dbcur):
             pass
         else:
             exstr = "check public.logs must not exist - Invalid case - ABORT"
-            print exstr
+            print(exstr)
             raise Exception(exstr)
 
 
@@ -39,7 +39,7 @@ def test():
         if "does not exist" in str(e):
             pass
         else:
-            print "drop TMP_DB exception:", str(e)
+            print("drop TMP_DB exception:", str(e))
             raise e
         
     dbcur.execute("create database {};".format(TMP_DB))
@@ -55,7 +55,7 @@ def test():
     ### basic operations in existing db
     # try unmerge from pg first if exists
     cmd = 'python azm_db_merge.py --unmerge --azm_file "example_logs/" --target_db_type postgresql --server_user {} --server_password {} --server_database {} --pg_schema all_logs | grep "unmerge mode called on an empty database"'.format(server_user, server_pass, TMP_DB)
-    print "test cmd:", cmd
+    print("test cmd:", cmd)
     assert 0 == subprocess.call(cmd, shell=True)
 
     # first import + table creation in schema
@@ -75,7 +75,7 @@ def test():
     make_sure_public_logs_doesnt_exist(dbcon, dbcur)
     
     dbcur.execute("select * from all_logs.logs")
-    assert 1 == dbcur.rowcount
+    assert 2 == dbcur.rowcount
 
     # unmerge it
     cmd = 'python azm_db_merge.py --azm_file "example_logs/" --target_db_type postgresql --server_user {} --server_password {} --server_database {} --pg_schema all_logs --unmerge'.format(server_user, server_pass, TMP_DB)
@@ -88,7 +88,7 @@ def test():
     cmd = 'python azm_db_merge.py --azm_file "example_logs/" --target_db_type postgresql --server_user {} --server_password {} --server_database {} --pg_schema all_logs'.format(server_user, server_pass, TMP_DB)
     assert 0 == subprocess.call(cmd,shell=True)
     dbcur.execute("select * from all_logs.logs")
-    assert 1 == dbcur.rowcount
+    assert 2 == dbcur.rowcount
     make_sure_public_logs_doesnt_exist(dbcon, dbcur)
 
     
