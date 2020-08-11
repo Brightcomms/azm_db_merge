@@ -1,10 +1,10 @@
 Setup instructions
 ============
 
-- Install python 2.7
-  - Windows: https://www.python.org/downloads/ - download 2.7.12, run installer,
+- Install python 3.7
+  - Windows: https://www.python.org/downloads/ - download 3.7.x, run installer,
   specify "add to PATH" during installer setup.
-  - Ubuntu/Debian: sudo apt-get install python2.7 python2.7-dev
+  - Ubuntu/Debian: sudo apt-get install python3.7 python3.7-dev
   
 - Install python package management
   -  Windows: Download get-pip.py from https://bootstrap.pypa.io/get-pip.py and run python get-pip.py
@@ -21,13 +21,13 @@ Setup instructions
 - Install other dependencies:
   - Ubuntu:
     *for PostgreSQL:
-    sudo pip install psycopg2==2.6.1
+    sudo pip install psycopg2==2.8.5
     *for MSSQL - not tested on Ubuntu though:*
     sudo apt-get install unixodbc-dev
     sudo pip install pyodbc
   - Windows:
     *for PostgreSQL - not tested on Windows though:
-    pip install psycopg2==2.6.1
+    pip install psycopg2==2.8.5
     *for MSSQL:*
     pip install pyodbc
   
