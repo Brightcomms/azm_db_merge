@@ -632,10 +632,11 @@ def process_azm_file(args):
 
         
         if (use_popen_mode):
-            print("starting sqlite3 subporcess...")
-            dump_process = popen_sqlite3_dump(args)
-            if dump_process is None:
-                raise Exception("FATAL: dump_process is None in popen_mode - ABORT")
+            # print("starting sqlite3 subporcess...")
+            # dump_process = popen_sqlite3_dump(args)
+            # if dump_process is None:
+            #     raise Exception("FATAL: dump_process is None in popen_mode - ABORT")
+            pass
         else:
             print("starting sqlite3 to dump db to .sql file...")
             dumped_sql_fp = dump_db_to_sql(dir_processing_azm)
